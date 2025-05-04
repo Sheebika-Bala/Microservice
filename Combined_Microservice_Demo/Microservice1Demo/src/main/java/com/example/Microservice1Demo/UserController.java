@@ -18,7 +18,7 @@ public class UserController {
     }
 
    @GetMapping
-   public List<User> getAllEmployees() {
+   public List<User> getAllUsers() {
        return userRepository.findAll();
    }
 
@@ -28,11 +28,11 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User userEmployee(@PathVariable Long id, @RequestBody User details) {
-        User emp = userRepository.findById(id)
+    public User users(@PathVariable Long id, @RequestBody User details) {
+        User temp = userRepository.findById(id)
                 .orElseThrow();
-        emp.setName(details.getName());
-        emp.setEmail(details.getEmail());
-        return userRepository.save(emp);
+        temp.setName(details.getName());
+        temp.setEmail(details.getEmail());
+        return userRepository.save(temp);
     }
 }
